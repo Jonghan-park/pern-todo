@@ -1,5 +1,12 @@
+// components
+import InputTodo from "./components/InputTodo";
+
 function App() {
-  return <div className="App">Todo app</div>;
+  return (
+    <div className="App">
+      <InputTodo />
+    </div>
+  );
 }
 
 export default App;
