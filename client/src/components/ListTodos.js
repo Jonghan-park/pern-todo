@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
+import EditTodo from "./EditTodo";
 import axios from "axios";
 
 const ListTodos = () => {
@@ -68,7 +69,9 @@ const ListTodos = () => {
                 <tr key={todo.todo_id}>
                   <th scope="row">{todo.todo_id}</th>
                   <td>{todo.description}</td>
-                  <td>Edit</td>
+                  <td>
+                    <EditTodo todo={todo} />
+                  </td>
                   <td>
                     <button
                       className="btn btn-danger"

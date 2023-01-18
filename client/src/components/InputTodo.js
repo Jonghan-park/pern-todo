@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+
 import axios from "axios";
 
 const InputTodo = () => {
@@ -9,7 +10,6 @@ const InputTodo = () => {
     try {
       const body = { desc };
       const response = await axios.post("http://localhost:5000/todos", body);
-      window.location("/");
     } catch (err) {
       console.log(err.message);
     }
