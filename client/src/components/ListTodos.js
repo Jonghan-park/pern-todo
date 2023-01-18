@@ -1,13 +1,31 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 import axios from "axios";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const deleteTodo = async (id) => {
+    try {
+      const deleteTodo = await axios.delete(
+        `http://localhost:5000/todos/${id}`
+      );
+      setTodos(todos.filter((todo) => todo.todo_id !== id));
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
   const getTodos = async () => {
     try {
+      setLoading(true);
       const response = await axios.get("http://localhost:5000/todos");
 
-      setTodos(response.data);
+      if (response) {
+        setTodos(response.data);
+        setLoading(false);
+      }
     } catch (err) {
       console.log(err.message);
     }
@@ -27,16 +45,41 @@ const ListTodos = () => {
           </tr>
         </thead>
         <tbody>
-          {todos.map((todo) => {
-            return (
-              <tr>
-                <th scope="row">{todo.todo_id}</th>
-                <td>{todo.description}</td>
-                <td>Edit</td>
-                <td>Delete</td>
-              </tr>
-            );
-          })}
+          {loading && (
+            <Fragment>
+              <div
+                className="spinnerContainer"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  padding: "2rem",
+                  alignItems: "center",
+                }}
+              >
+                <Spinner animation="border" role="status"></Spinner>
+                <h3>It takes up to 30 seconds to get data from database. </h3>
+              </div>
+            </Fragment>
+          )}
+          {!loading &&
+            todos.map((todo) => {
+              return (
+                <tr key={todo.todo_id}>
+                  <th scope="row">{todo.todo_id}</th>
+                  <td>{todo.description}</td>
+                  <td>Edit</td>
+                  <td>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteTodo(todo.todo_id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </Fragment>
