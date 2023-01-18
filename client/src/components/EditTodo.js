@@ -12,6 +12,7 @@ const EditTodo = ({ todo }) => {
         `http://localhost:5000/todos/${todo.todo_id}`,
         body
       );
+      window.location.reload(true);
     } catch (err) {
       console.log(err.message);
     }
