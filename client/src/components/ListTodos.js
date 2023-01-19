@@ -37,9 +37,8 @@ const ListTodos = () => {
   return (
     <Fragment>
       <table class="table">
-        <thead>
+        <thead className="table-dark">
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Description</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
@@ -67,7 +66,6 @@ const ListTodos = () => {
             todos.map((todo) => {
               return (
                 <tr key={todo.todo_id}>
-                  <th scope="row">{todo.todo_id}</th>
                   <td>{todo.description}</td>
                   <td>
                     <EditTodo todo={todo} />

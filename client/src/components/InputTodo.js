@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import "./inputTodo.css";
 
 import axios from "axios";
 
@@ -19,15 +20,19 @@ const InputTodo = () => {
   return (
     <Fragment>
       <h1 className="text-center mt-5">Pern Todo List</h1>
-      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
-        <input
-          type="text"
-          className="form-control"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
-        <button className="btn btn-success">Add</button>
-      </form>
+      <div className="inputForm">
+        <form onSubmit={onSubmitForm}>
+          <input
+            type="text"
+            className="form-control"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+          <div className="buttonContainer">
+            <button className="addButton">Add</button>
+          </div>
+        </form>
+      </div>
     </Fragment>
   );
 };
