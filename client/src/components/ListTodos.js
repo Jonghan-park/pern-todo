@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const deleteTodo = async (id) => {
     try {
@@ -20,15 +20,11 @@ const ListTodos = () => {
 
   const getTodos = async () => {
     try {
-      setLoading(true);
       const response = await axios.get(
         "https://pern-todo-webserver.onrender.com/todos"
       );
-
-      if (response) {
-        setTodos(response.data);
-        setLoading(false);
-      }
+      setTodos(response.data);
+      setLoading(false);
     } catch (err) {
       console.log(err.message);
     }
