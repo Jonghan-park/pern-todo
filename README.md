@@ -1,5 +1,5 @@
 # Todo List using PostgreSQL
-https://jonghan-profile.netlify.app/
+https://pern-todo-av96.onrender.com/
 
 # Period
 17 Jan, 2023 ~ 20 Jan, 2023
