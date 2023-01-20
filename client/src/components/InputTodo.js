@@ -11,7 +11,10 @@ const InputTodo = () => {
     try {
       if (desc !== "") {
         const body = { desc };
-        const response = await axios.post("http://localhost:5000/todos", body);
+        const response = await axios.post(
+          "https://pern-todo-webserver.onrender.com/todos",
+          body
+        );
       }
 
       window.location.reload(true);
