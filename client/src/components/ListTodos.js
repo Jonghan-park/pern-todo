@@ -58,7 +58,7 @@ const ListTodos = () => {
                 }}
               >
                 <Spinner animation="border" role="status"></Spinner>
-                <h3>It takes up to 30 seconds to get data from database. </h3>
+                <h3>It might take 30 seconds to get data from database. </h3>
               </div>
             </Fragment>
           )}
