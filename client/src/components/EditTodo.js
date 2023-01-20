@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Fragment, useState } from "react";
+import "./editTodo.css";
 
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);
@@ -22,7 +23,7 @@ const EditTodo = ({ todo }) => {
     <Fragment>
       <button
         type="button"
-        class="btn btn-primary"
+        class="editButton"
         data-bs-toggle="modal"
         data-bs-target={`#id${todo.todo_id}`}
       >
@@ -53,7 +54,7 @@ const EditTodo = ({ todo }) => {
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-warning"
+                class="editButton"
                 data-bs-dismiss="modal"
                 onClick={(e) => updateDescription(e)}
               >
