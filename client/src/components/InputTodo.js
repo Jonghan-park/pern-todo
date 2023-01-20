@@ -9,8 +9,11 @@ const InputTodo = () => {
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      const body = { desc };
-      const response = await axios.post("http://localhost:5000/todos", body);
+      if (desc !== "") {
+        const body = { desc };
+        const response = await axios.post("http://localhost:5000/todos", body);
+      }
+
       window.location.reload(true);
     } catch (err) {
       console.log(err.message);
