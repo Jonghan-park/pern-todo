@@ -9,7 +9,7 @@ const pool = new Pool({
   host: POSTGRESQL_HOST,
   password: POSTGRESQL_PASSWORD,
   port: 5432,
-  database: "perntodo",
+  database: "jonghan",
   ssl: "true",
 });
 
